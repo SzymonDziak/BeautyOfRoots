@@ -36,8 +36,8 @@ public class Fractal : MonoBehaviour
         Quaternion.Euler(-90f, 0f, 0f), // Fractal Child Back
         Quaternion.Euler(0f, 0f, 270f) // Fractal Child Down
     };
+
     [SerializeField]
-    public List<GameObject> objects = new List<GameObject>();
 
     private int depth;
     private Material[] materials;
@@ -53,6 +53,8 @@ public class Fractal : MonoBehaviour
     [Header("Materials")]
     public Color[] ColorToLerp = new Color[2];
     public Color OuterColor;
+
+    public static int count;
 
     #endregion
 
@@ -72,14 +74,17 @@ public class Fractal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        count++;
+
         // Only create materials once... 
         if(materials == null)
         {
             InitializeMaterials();
+            Debug.Log("Initializing materials");
         }
 
         gameObject.AddComponent<MeshFilter>().mesh = mesh;
-        gameObject.AddComponent<MeshRenderer>().material = materials[depth];
+        gameObject.AddComponent<MeshRenderer>().sharedMaterial = materials[depth];
 
         if(depth < maxDepth)
         {
@@ -108,6 +113,5 @@ public class Fractal : MonoBehaviour
         transform.localScale = Vector3.one * childScale;
         transform.localPosition = childDirections[childIndex] * (0.5f + 0.5f * childScale);
         transform.localRotation = childOrientations[childIndex]; // rotates in direction away from fractal.
-        objects.Add(gameObject);
     }
 }
