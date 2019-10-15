@@ -38,7 +38,6 @@ public class Fractal : MonoBehaviour
     };
 
     [SerializeField]
-
     private int depth;
     private Material[] materials;
 
@@ -55,6 +54,10 @@ public class Fractal : MonoBehaviour
     public Color OuterColor;
 
     public static int count;
+    public bool enableSineFunction;
+    public static Fractal Instance { get; set; }
+
+    Transform[] points;
 
     #endregion
 
@@ -74,6 +77,10 @@ public class Fractal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
         count++;
 
         // Only create materials once... 
@@ -96,8 +103,9 @@ public class Fractal : MonoBehaviour
         for(int i = 0; i < childDirections.Length; i++)
         {
             yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
-            new GameObject("Fractal Child").AddComponent<Fractal>()
+            new GameObject("Fractal Child", typeof(SineFunction)).AddComponent<Fractal>()
                 .Initialize(this, i);
+            // typeof(SineFunction)
         }
 
     }
