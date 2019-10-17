@@ -644,7 +644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   depth: 0
   mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+  material: {fileID: 2100000, guid: c6a0fab9f9ce44b32b9847f2c7230496, type: 2}
   maxDepth: 4
   childScale: 0.5
   ColorToLerp:
@@ -652,6 +652,7 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 0.57301307, a: 0}
   OuterColor: {r: 0.98765564, g: 1, b: 0, a: 0}
   enableSineFunction: 0
+  maxScale: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

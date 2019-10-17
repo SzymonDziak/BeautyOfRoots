@@ -14,7 +14,7 @@ public class SineFunction : MonoBehaviour
             transform.position = new Vector3(transform.position.x, function(transform.position.x, Time.time), transform.position.z);
         }
     }
-    public float function(float x, float t)
+    public static float function(float x, float t)
     {
         return Mathf.Sin(Mathf.PI * (x + t));
     }

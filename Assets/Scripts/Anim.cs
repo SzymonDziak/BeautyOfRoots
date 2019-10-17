@@ -60,7 +60,7 @@ public class Anim : MonoBehaviour
     float MultiSineFunction(float x, float t)
     {
         float y = Mathf.Sin(Mathf.PI * (x + t));
-        y += Mathf.Sin(2f * Mathf.PI * (x + t)) / 2f;
+        y += Mathf.Sin(2f * Mathf.PI * (x + t)) / 2f; // range is [-1.5,1.5]
         y *= 2f / 3f; // to guarantee -1 to 1 range.
         return y;
     }

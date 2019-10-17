@@ -59,6 +59,8 @@ public class Fractal : MonoBehaviour
 
     Transform[] points;
 
+    Vector3 minScale;
+    public Vector3 maxScale;
     #endregion
 
     private void InitializeMaterials()
@@ -77,6 +79,7 @@ public class Fractal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        minScale = transform.localScale;
         if(Instance == null)
         {
             Instance = this;
@@ -104,7 +107,8 @@ public class Fractal : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
             new GameObject("Fractal Child", typeof(SineFunction)).AddComponent<Fractal>()
-                .Initialize(this, i);
+                .Initialize(this, i); 
+
             // typeof(SineFunction)
         }
 
